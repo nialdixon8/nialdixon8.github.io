@@ -39,16 +39,64 @@
         </ul>
         {% endif %}
       </header>
-      <section>
 
-      {{ content }}
-
+      <section id="profile">
+        <p>This is my personal website hosted on github pages and built from Jekyll. Email me at nialdixon8@gmail.com for any queries.</p>
       </section>
+
+<section id="education">
+  <h2>Education</h2>
+  <ul>
+    <li>
+      <strong>University of Birmingham</strong> (Sep 2024 – Present)<br>
+      MSc Advanced Computer Science
+    </li>
+    <li>
+      <strong>University of Leicester</strong> (Sep 2020 – May 2024)<br>
+      BSc Software Engineering – Grade: 1st Class
+    </li>
+  </ul>
+</section>
+
+<section id="work-experience">
+  <h2>Work Experience</h2>
+  <ul>
+    <li>
+      <strong>Math's and Computing Tutor</strong> (Oct 2020 – Present)<br>
+      Delivered tailored tutoring in mathematics and computer science, enhancing academic performance and problem-solving skills.
+    </li>
+    <li>
+      <strong>Barclays – Developer Analyst</strong> (Jun 2022 – Aug 2022)<br>
+      Led an infrastructure transition between technologies saving annual licensing costs and demonstrated AI technologies to business units.
+    </li>
+  </ul>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <ul>
+    <li>
+      <strong>AI Stock Prediction Application</strong><br>
+      Developed a full-stack AI stock prediction app with React, Redux, Node.js, MongoDB, and PyTorch. Allowed no code users to build and maintain their own advanced prediction algorithms for personal investment use.
+    </li>
+    <li>
+      <strong>Crypto Vibes</strong><br>
+      A start-up built to find correlations between the sentiment of cryptocurrencies and future prices. 
+      Built sophisticated data collection tools to collect articles and opinions from various media sites. Utilised LLMs for sentiment analysis and statistical analysis to find relation to price fluctuations.
+    </li>
+  </ul>
+</section>
+
+<section id="interests">
+  <h2>Interests</h2>
+  <p>Hackathons, Futsal, and playing Guitar.</p>
+</section>
+
       <footer>
         {% if site.github.is_project_page %}
         <p>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
         {% endif %}
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        <!--<p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>-->
       </footer>
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
