@@ -1,4 +1,5 @@
 title: Nial Dixon
+tagline: "Software Engineer | AI Enthusiast | Game Developer"
 email: nialdixon8@gmail.com
 description: >- 
   MSc Advanced Computer Science student with experience in software engineering, AI, and data visualization.
@@ -8,13 +9,30 @@ url: "https://www.nialdixon.com"
 linkedin_username: linkedin.com/in/nial-dixon
 
 repository: nialdixon8/nialdixon8.github.io
-remote_theme: pages-themes/minimal@v0.2.0
 plugins:
   - jekyll-feed
-  - jekyll-remote-theme 
+  - jekyll-seo-tag 
 
-sections:
-  - Education
-  - Work Experience
-  - Projects
-  - Interests
+# Social links
+social_links:
+  github: https://github.com/nialdixon8
+  linkedin: https://linkedin.com/in/nial-dixon
+  email: nialdixon8@gmail.com
+
+# Navigation menu
+nav_menu:
+  - title: "About"
+    href: "#about"
+  - title: "Skills"
+    href: "#skills"
+  - title: "Projects"
+    href: "#projects"
+  - title: "Experience"
+    href: "#experience"
+  - title: "Contact"
+    href: "#contact"
+
+# Profile
+profile:
+  role: "Software Engineer & AI Enthusiast"
+  bio: "Building elegant solutions with code and creativity"

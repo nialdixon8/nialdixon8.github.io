@@ -1,236 +1,81 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.title }}{% if page.title %} - {{ page.title }}{% endif %}</title>
+    {% seo %}
+    <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{{ site.url }}" class="nav-logo">{{ site.title }}</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                {% if site.nav_menu %}
+                    {% for item in site.nav_menu %}
+                        <li><a href="{{ item.href }}" class="nav-link">{{ item.title }}</a></li>
+                    {% endfor %}
+                {% endif %}
+                <li><a href="javascript:void(0)" class="nav-link" id="themeToggle">🌙</a></li>
+            </ul>
+        </div>
+    </nav>
 
-{% seo %}
-    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
-    <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <![endif]-->
-    {% include head-custom.html %}
-    <style>
-      :root {
-        --background-color: #ffffff;
-        --text-color: #000000;
-        --header-color: #f5f5f5;
-        --link-color: #0077cc;
-        --button-bg: #e0e0e0;
-        --button-text: #000000;
-        --transition-duration: 0.3s;
-      }
-    
-      body.night-mode {
-        --background-color: #121212;
-        --text-color: #ffffff;
-        --header-color: #222222;
-        --link-color: #4fa6ff;
-        --button-bg: #444444;
-        --button-text: #ffffff;
-      }
-    
-      body {
-        background-color: var(--background-color);
-        color: var(--text-color);
-        transition: background-color var(--transition-duration), color var(--transition-duration);
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-      }
-    
-      header {
-        background-color: var(--header-color);
-        padding: 1rem;
-        text-align: center;
-      }
-    
-      header h1 {
-        margin: 0;
-        color: var(--text-color);
-      }
-    
-      nav ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-      }
-    
-      nav ul li {
-        display: inline;
-      }
-    
-      a {
-        color: var(--link-color);
-        text-decoration: none;
-        transition: color var(--transition-duration);
-      }
-    
-      a:hover {
-        text-decoration: underline;
-      }
-    
-      button {
-        background-color: var(--button-bg);
-        color: var(--button-text);
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-        border-radius: 5px;
-        transition: background-color var(--transition-duration), color var(--transition-duration);
-      }
-    
-      button:hover {
-        filter: brightness(1.2);
-      }
-    
-      footer {
-        background-color: var(--header-color);
-        text-align: center;
-        padding: 1rem;
-        color: var(--text-color);
-        transition: background-color var(--transition-duration), color var(--transition-duration);
-      }
-    
-      section {
-        padding: 1rem 2rem;
-      }
-    
-      h2 {
-        color: var(--text-color);
-      }
-    
-      ul {
-        padding-left: 1.5rem;
-      }
-      strong {
-        color: var(--text-color);
-        font-weight: bold;
-      }
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">{{ site.title }}</h1>
+            <p class="hero-subtitle">{{ site.profile.role }}</p>
+            <p class="hero-bio">{{ site.profile.bio }}</p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span></span>
+        </div>
+    </header>
 
-      body.night-mode strong {
-        color: #ffd700;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
+    <!-- Main Content -->
+    <main class="container">
+        {{ content }}
+    </main>
 
-        {% if site.logo %}
-          <img src="{{site.logo | relative_url}}" alt="Logo" />
-        {% endif %}
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>{{ site.title }}</h3>
+                <p>{{ site.description }}</p>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul class="social-links">
+                    {% if site.social_links.github %}
+                        <li><a href="{{ site.social_links.github }}" target="_blank" rel="noopener">GitHub</a></li>
+                    {% endif %}
+                    {% if site.social_links.linkedin %}
+                        <li><a href="{{ site.social_links.linkedin }}" target="_blank" rel="noopener">LinkedIn</a></li>
+                    {% endif %}
+                    {% if site.social_links.email %}
+                        <li><a href="mailto:{{ site.social_links.email }}">Email</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; {{ site.title }} {{ "now" | date: "%Y" }}. All rights reserved.</p>
+        </div>
+    </footer>
 
-        <p>{{ site.description | default: site.github.project_tagline }}</p>
-
-        {% if site.github.is_project_page %}
-        <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
-        {% endif %}
-
-        {% if site.github.is_user_page %}
-        <p class="view"><a href="{{ site.github.owner_url }}">View My GitHub Profile</a></p>
-        {% endif %}
-
-        {% if site.show_downloads %}
-        <ul class="downloads">
-          <li><a href="{{ site.github.zip_url }}">Download <strong>ZIP File</strong></a></li>
-          <li><a href="{{ site.github.tar_url }}">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="{{ site.github.repository_url }}">View On <strong>GitHub</strong></a></li>
-        </ul>
-        {% endif %}
-        <button id="toggle-night-mode">Toggle Night Mode</button>
-      </header>
-
-      <section id="profile">
-        <p>This is my personal website hosted on github pages and built from Jekyll. Email me at nialdixon8@gmail.com for any queries.</p>
-      </section>
-
-<section id="education">
-  <h2>Education</h2>
-  <ul>
-    <li>
-      <strong>University of Birmingham</strong> (Sep 2024 – Present)<br>
-      MSc Advanced Computer Science
-    </li>
-    <li>
-      <strong>University of Leicester</strong> (Sep 2020 – May 2024)<br>
-      BSc Software Engineering – Grade: 1st Class
-    </li>
-  </ul>
-</section>
-
-<section id="work-experience">
-  <h2>Work Experience</h2>
-  <ul>
-    <li>
-      <strong>Math's and Computing Tutor</strong> (Oct 2020 – Present)<br>
-      Delivered tailored tutoring in mathematics and computer science, enhancing academic performance and problem-solving skills.
-    </li>
-    <li>
-      <strong>Barclays – Developer Analyst</strong> (Jun 2022 – Aug 2022)<br>
-      Led an infrastructure transition between technologies saving annual licensing costs and demonstrated AI technologies to business units.
-    </li>
-  </ul>
-</section>
-
-<section id="projects">
-  <h2>Projects</h2>
-  <ul>
-    <li>
-      <strong>AI Stock Prediction Application</strong><br>
-      Developed a full-stack AI stock prediction app with React, Redux, Node.js, MongoDB, and PyTorch. Allowed no code users to build and maintain their own advanced prediction algorithms for personal investment use.
-    </li>
-    <li>
-      <strong>Crypto Vibes</strong><br>
-      A start-up built to find correlations between the sentiment of cryptocurrencies and future prices. 
-      Built sophisticated data collection tools to collect articles and opinions from various media sites. Utilised LLMs for sentiment analysis and statistical analysis to find relation to price fluctuations.
-    </li>
-  </ul>
-</section>
-
-<section id="interests">
-  <h2>Interests</h2>
-  <p>Hackathons, Futsal, and playing Guitar.</p>
-</section>
-
-      <footer>
-        {% if site.github.is_project_page %}
-        <p>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
-        {% endif %}
-        <!--<p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>-->
-      </footer>
-    </div>
-
-    <script>
-      const toggleButton = document.getElementById("toggle-night-mode");
-    
-
-      if (localStorage.getItem("nightMode") === "enabled") {
-        document.body.classList.add("night-mode");
-        toggleButton.textContent = "Day Mode"; 
-      } else {
-        toggleButton.textContent = "Night Mode"; 
-      }
-    
-
-      toggleButton.addEventListener("click", () => {
-        const isNightMode = document.body.classList.toggle("night-mode");
-    
-        if (isNightMode) {
-          localStorage.setItem("nightMode", "enabled");
-          toggleButton.textContent = "Day Mode";
-        } else {
-          localStorage.removeItem("nightMode");
-          toggleButton.textContent = "Night Mode";
-        }
-      });
-    </script>
-    
-        <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
-  </body>
+    <script src="{{ "/assets/js/main.js" | relative_url }}"></script>
+</body>
 </html>
